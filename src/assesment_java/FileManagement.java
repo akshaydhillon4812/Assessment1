@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import assesment_java.Exceptions.FileAlreadyPresentException;
 
 public class FileManagement {
 
