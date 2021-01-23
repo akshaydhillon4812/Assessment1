@@ -5,10 +5,15 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String args[]) {
-		FileManagement f = new FileManagement();
-		int selectedOption = 3;
 		System.out.println("File Manager Starting ...");
 		System.out.println("Developed by Akshay Dhillon \n \n");
+		fileApp();
+	}
+	
+	public static void fileApp() {
+		FileManagement f = new FileManagement();
+		int selectedOption = 3;
+
 		Scanner sc = new Scanner(System.in);
 		do {
 			
@@ -24,7 +29,7 @@ public class Main {
 					if(selectedOption == 1) {
 						f.listAllFiles();
 					} else if(selectedOption == 2) {
-						fileCRUDOperation(f,sc);
+						fileCRUDOperation(f);
 					} else if(selectedOption == 3) {
 						System.out.println("Exiting the Application ...");
 					} else {
@@ -32,14 +37,17 @@ public class Main {
 					} 	
 				} catch(Exception exception) {
 					System.out.println("\nException Occured Invalid Input ");
+					fileApp();
 				}
 			
 			
 		} while (selectedOption != 3);
-		
+	
 	}
-	public static void fileCRUDOperation(FileManagement fileManager, Scanner sc) {
-		
+	
+	public static void fileCRUDOperation(FileManagement fileManager) {
+		Scanner sc = new Scanner(System.in);
+
 		int selectedOption = 4;
 		
 		do {
@@ -73,11 +81,11 @@ public class Main {
 					System.out.println("Please Enter a Valid Choice ");
 				}
 			} catch(InputMismatchException exception) {
-				System.out.println("Invalid Input Exiting the Application");
-				System.exit(1);
+				System.out.println("Invalid Input");
+				fileCRUDOperation(fileManager);
 			} catch(Exception exception) {
 				System.out.println(exception.getStackTrace());
-				System.exit(1);
+				fileCRUDOperation(fileManager);
 			}
 
 			
